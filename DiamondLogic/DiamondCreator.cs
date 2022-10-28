@@ -8,9 +8,9 @@ public class DiamondCreator
         return range.Select(Expand);
     }
 
-    private List<string> CreateRange(string character)
+    public List<string> CreateRange(string character)
     {
-        throw new NotImplementedException();
+        return new List<string> { character };
     }
 
     private string Expand(string arg1, int index)
