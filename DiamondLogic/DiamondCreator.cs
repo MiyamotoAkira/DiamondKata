@@ -8,9 +8,13 @@ public class DiamondCreator
         return range.Select(Expand);
     }
 
-    public List<string> CreateRange(string character)
+    public IEnumerable<string> CreateRange(string character)
     {
-        return new List<string> { character };
+        return Enumerable.Range('A', character[0] - 'A' + 1)
+                         .Select(c => ((char)c).ToString())
+                         .Concat(Enumerable.Range('A', character[0] - 'A')
+                                           .Select(c => ((char)c).ToString())
+                                           .OrderByDescending(c => c));
     }
 
     private string Expand(string arg1, int index)
