@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondCli", "DiamondCli\DiamondCli.csproj", "{7E2E1283-8411-4004-A33C-6BAA7146FBF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondLogic", "DiamondLogic\DiamondLogic.csproj", "{C9C22E17-C6CF-4751-899C-7D5D4C2275F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondTests", "DiamondTests\DiamondTests.csproj", "{ECAB5E30-E9A8-4378-B9CD-C42CC2F2599F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E2E1283-8411-4004-A33C-6BAA7146FBF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2E1283-8411-4004-A33C-6BAA7146FBF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2E1283-8411-4004-A33C-6BAA7146FBF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2E1283-8411-4004-A33C-6BAA7146FBF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C22E17-C6CF-4751-899C-7D5D4C2275F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C22E17-C6CF-4751-899C-7D5D4C2275F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C22E17-C6CF-4751-899C-7D5D4C2275F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C22E17-C6CF-4751-899C-7D5D4C2275F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECAB5E30-E9A8-4378-B9CD-C42CC2F2599F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECAB5E30-E9A8-4378-B9CD-C42CC2F2599F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECAB5E30-E9A8-4378-B9CD-C42CC2F2599F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECAB5E30-E9A8-4378-B9CD-C42CC2F2599F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
