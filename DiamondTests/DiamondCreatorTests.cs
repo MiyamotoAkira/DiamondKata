@@ -16,7 +16,7 @@ public class DiamondTest
 
         var expected = new List<string> { "A", "B B", "C  C", "B B", "A" };
 
-        result.Should().BeSameAs(expected);
+        result.Should().BeEquivalentTo(expected);
 
     }
 
