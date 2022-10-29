@@ -37,4 +37,22 @@ public class DiamondTest
 
         actual.Should().BeEquivalentTo(expected);
     }
+
+    public static IEnumerable<object[]> GetExpandedCharacter()
+    {
+        yield return new object[] { "A", "A" };
+        yield return new object[] { "B", "B B" };
+        yield return new object[] { "E", "E    E" };
+    }
+
+    [Theory]
+    [MemberData(nameof(GetExpandedCharacter))]
+    public void ExpandTest(string character, string expected)
+    {
+        var diamondCreator = new DiamondCreator();
+
+        var actual = diamondCreator.Expand(character);
+
+        actual.Should().Be(expected);
+    }
 }

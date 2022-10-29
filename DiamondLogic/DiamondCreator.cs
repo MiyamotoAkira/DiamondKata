@@ -18,8 +18,16 @@ public class DiamondCreator
         return firstHalf.Concat(secondHalf);
     }
 
-    private string Expand(string arg1, int index)
+    public string Expand(string character)
     {
-        throw new NotImplementedException();
+
+        var spaces = string.Concat(Enumerable.Repeat(" ", character[0] - 'A'));
+
+        if (spaces == "")
+        {
+            return $"{character}";
+        }
+
+        return $"{character}{spaces}{character}";
     }
 }
