@@ -5,7 +5,7 @@ public class DiamondCreator
     public IEnumerable<string> generate(string character)
     {
         var range = CreateRange(character);
-        return range.Select(Expand);
+        return range.Select(Expand).Select(c => Wrap(c, character));
     }
 
     public IEnumerable<string> CreateRange(string character)
@@ -29,5 +29,13 @@ public class DiamondCreator
         }
 
         return $"{character}{spaces}{character}";
+    }
+
+    public string Wrap(string character, string requestedCharacter)
+    {
+        var spaces = string.Concat(Enumerable.Repeat(" ", requestedCharacter[0] - character[0]));
+
+        
+        return $"{spaces}{character}{spaces}";
     }
 }

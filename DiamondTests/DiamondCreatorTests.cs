@@ -14,17 +14,17 @@ public class DiamondTest
 
         var result = diamondCreator.generate("C");
 
-        var expected = new List<string> { "A", "B B", "C  C", "B B", "A" };
+        var expected = new List<string> { "  A  ", " B B ", "C  C", " B B ", "  A  " };
 
         result.Should().BeEquivalentTo(expected);
 
     }
 
-    public static IEnumerable<object[]> GetCharacterRange ()
+    public static IEnumerable<object[]> GetCharacterRange()
     {
         yield return new object[] { "A", new List<string> { "A" } };
         yield return new object[] { "B", new List<string> { "A", "B", "A" } };
-        yield return new object[] { "Z", new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "N", "M", "L", "K", "J", "I", "H", "G", "F", "E", "D", "C", "B","A" } };
+        yield return new object[] { "Z", new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "N", "M", "L", "K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A" } };
     }
 
     [Theory]
@@ -52,6 +52,24 @@ public class DiamondTest
         var diamondCreator = new DiamondCreator();
 
         var actual = diamondCreator.Expand(character);
+
+        actual.Should().Be(expected);
+    }
+
+    public static IEnumerable<object[]> GetWrappedLine()
+    {
+        yield return new object[] { "A", "A", "A" };
+        yield return new object[] { "A", "C", "  A  " };
+        yield return new object[] { "C  C", "F", "   C  C   " };
+    } 
+    
+    [Theory]
+    [MemberData(nameof(GetWrappedLine))]
+    public void WrapTest(string line, string requestedCharacter, string expected)
+    {
+        var diamondCreator = new DiamondCreator();
+
+        var actual = diamondCreator.Wrap(line, requestedCharacter);
 
         actual.Should().Be(expected);
     }
