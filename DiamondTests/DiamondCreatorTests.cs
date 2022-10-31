@@ -49,14 +49,14 @@ public class DiamondTest
 
     public static IEnumerable<object[]> GetCharacterRange()
     {
-        yield return new object[] { "A", new List<string> { "A" } };
-        yield return new object[] { "B", new List<string> { "A", "B", "A" } };
-        yield return new object[] { "Z", new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "N", "M", "L", "K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A" } };
+        yield return new object[] { "A", new List<char> { 'A' } };
+        yield return new object[] { "B", new List<char> { 'A', 'B', 'A' } };
+        yield return new object[] { "Z", new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A' } };
     }
 
     [Theory]
     [MemberData(nameof(GetCharacterRange))]
-    public void CreateRangeTest(string character, List<string> expected)
+    public void CreateRangeTest(string character, List<char> expected)
     {
         var diamondCreator = new DiamondCreator();
 
@@ -78,10 +78,10 @@ public class DiamondTest
     }
 
     [Theory]
-    [InlineData("B", "   ", "B B")]
-    [InlineData("A", "     ", "  A  ")]
-    [InlineData("F", "           ", "F         F")]
-    public void MergeInLineTest(string character, string line, string expected)
+    [InlineData('B', "   ", "B B")]
+    [InlineData('A', "     ", "  A  ")]
+    [InlineData('F', "           ", "F         F")]
+    public void MergeInLineTest(char character, string line, string expected)
     {
         var diamondCreator = new DiamondCreator();
 
