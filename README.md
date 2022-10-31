@@ -13,6 +13,8 @@ To run the tests you can use `dotnet test` from the root folder of the solution.
 
 # Notes
 
+The solution is divided on three projects, one that deals just with the cli (to use the arguments passed and to print the result), one that deals with the logic, and the test project. The solution is simple enough that maybe the cli and the logic could have been the same project, but done this way as I have always preferred to separate those concerns when dealing with cli applications.
+
 There is no error handling if the user sends the wrong data. It is a simple app, so just a runtime exception is fine.
 
 The design has been done stateless. The solution is quite simple, and there was no much point to try to extract an object(s) from it (though there is a line concept that could easily be extracted).
