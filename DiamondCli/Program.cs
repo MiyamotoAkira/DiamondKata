@@ -1,2 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using DiamondLogic;
+
+var diamondCreator = new DiamondCreator();
+
+var result = diamondCreator.generate(args[0]);
+
+foreach (var line in result)
+    Console.WriteLine(line);
