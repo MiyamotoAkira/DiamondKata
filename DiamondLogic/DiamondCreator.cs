@@ -14,10 +14,11 @@ public class DiamondCreator
     public IEnumerable<char> CreateRange(string character)
     {
         var firstHalf = Enumerable.Range('A', character[0] - 'A' + 1)
-            .Select(c => ((char)c));
+                                  .Select(c => ((char)c));
+        
         var secondHalf = Enumerable.Range('A', character[0] - 'A')
-                                           .Select(c => ((char)c))
-            .OrderByDescending(c => c);
+                                   .Select(c => ((char)c))
+                                   .OrderByDescending(c => c);
         return firstHalf.Concat(secondHalf);
     }
 
