@@ -8,13 +8,40 @@ namespace DiamondTests;
 public class DiamondTest
 {
     [Fact]
-    public void CreateDiamondTest()
+    public void CreateDiamondTestWithC()
     {
         var diamondCreator = new DiamondCreator();
 
         var result = diamondCreator.generate("C");
 
-        var expected = new List<string> { "  A  ", " B B ", "C  C", " B B ", "  A  " };
+        var expected = new List<string> { "  A  ",
+                                          " B B ",
+                                          "C   C",
+                                          " B B ",
+                                          "  A  " };
+
+        result.Should().BeEquivalentTo(expected);
+
+    }
+
+    [Fact]
+    public void CreateDiamondTestWithF()
+    {
+        var diamondCreator = new DiamondCreator();
+
+        var result = diamondCreator.generate("F");
+
+        var expected = new List<string> { "     A     ",
+                                          "    B B    ",
+                                          "   C   C   ",
+                                          "  D     D  ",
+                                          " E       E ",
+                                          "F         F",
+                                          " E       E ",
+                                          "  D     D  ",
+                                          "   C   C   ",
+                                          "    B B    ",
+                                          "     A     " };
 
         result.Should().BeEquivalentTo(expected);
 
@@ -38,38 +65,27 @@ public class DiamondTest
         actual.Should().BeEquivalentTo(expected);
     }
 
-    public static IEnumerable<object[]> GetExpandedCharacter()
-    {
-        yield return new object[] { "A", "A" };
-        yield return new object[] { "B", "B B" };
-        yield return new object[] { "E", "E    E" };
-    }
-
     [Theory]
-    [MemberData(nameof(GetExpandedCharacter))]
-    public void ExpandTest(string character, string expected)
+    [InlineData(1, " ")]
+    [InlineData(5, "     ")]
+    public void CreateLineTest(int lineLength, string expected)
     {
         var diamondCreator = new DiamondCreator();
 
-        var actual = diamondCreator.Expand(character);
+        var actual = diamondCreator.CreateLine(lineLength);
 
         actual.Should().Be(expected);
     }
 
-    public static IEnumerable<object[]> GetWrappedLine()
-    {
-        yield return new object[] { "A", "A", "A" };
-        yield return new object[] { "A", "C", "  A  " };
-        yield return new object[] { "C  C", "F", "   C  C   " };
-    } 
-    
     [Theory]
-    [MemberData(nameof(GetWrappedLine))]
-    public void WrapTest(string line, string requestedCharacter, string expected)
+    [InlineData("B", "   ", "B B")]
+    [InlineData("A", "     ", "  A  ")]
+    [InlineData("F", "           ", "F         F")]
+    public void MergeInLineTest(string character, string line, string expected)
     {
         var diamondCreator = new DiamondCreator();
 
-        var actual = diamondCreator.Wrap(line, requestedCharacter);
+        var actual = diamondCreator.MergeInLine(character, line);
 
         actual.Should().Be(expected);
     }

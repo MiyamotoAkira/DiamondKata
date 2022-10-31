@@ -1,11 +1,14 @@
-﻿namespace DiamondLogic;
+﻿using System.Text;
+
+namespace DiamondLogic;
 
 public class DiamondCreator
 {
     public IEnumerable<string> generate(string character)
     {
         var range = CreateRange(character);
-        return range.Select(Expand).Select(c => Wrap(c, character));
+        var line = CreateLine(range.Count());
+        return range.Select(c => MergeInLine(c, line));
     }
 
     public IEnumerable<string> CreateRange(string character)
@@ -18,24 +21,18 @@ public class DiamondCreator
         return firstHalf.Concat(secondHalf);
     }
 
-    public string Expand(string character)
+    public string CreateLine(int lineLength)
     {
-
-        var spaces = string.Concat(Enumerable.Repeat(" ", character[0] - 'A'));
-
-        if (spaces == "")
-        {
-            return $"{character}";
-        }
-
-        return $"{character}{spaces}{character}";
+        return string.Concat(Enumerable.Repeat(" ", lineLength));
     }
 
-    public string Wrap(string character, string requestedCharacter)
+    public string MergeInLine(string character, string line)
     {
-        var spaces = string.Concat(Enumerable.Repeat(" ", requestedCharacter[0] - character[0]));
-
-        
-        return $"{spaces}{character}{spaces}";
+        var builder = new StringBuilder(line);
+        var middleOfLine = line.Length / 2;
+        var position = character[0] - 'A';
+        builder[middleOfLine - position] = character[0];
+        builder[middleOfLine + position] = character[0];
+        return builder.ToString();
     }
 }
